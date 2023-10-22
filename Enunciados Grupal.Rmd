@@ -12,6 +12,13 @@ output: pdf_document
 Aplicar los criterios de decisión bajo incertidumbre a una matriz de datos 
 generados aleatoriamente, considerandolos primero beneficios y luego costos:
 
+```{r echo=FALSE}
+set.seed(778)
+datos=runif(8*5)
+datos=round(datos,2)
+tabla1=crea.tablaX(c(datos), 8, 5)
+tabla1
+```
 
 *Problema 2*
 
