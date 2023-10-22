@@ -645,13 +645,6 @@ criterio.Todos(Tabla1,0.6, T)
 
 (b) A continuación vamos a hacerlo para los casos desfavorables:  
 
-· TABLA DE COSTOS
-
-```{r}
-Tabla2=crea.tablaX(c(3,2,6,7,9,0,0,-1,-3,5,-5,4,4,6,7,0,2,2,1,0,9,8,7,3,4,4,-2,-1,5,-8),numalternativas=6, numestados = 5)
-
-Tabla1
-```
 
 · Criterio de Wald:
 
@@ -812,7 +805,7 @@ x32
 ```
 
 
-· Ahora creamos la tabal de los datos:
+· Ahora creamos la tabla de los datos:
 
 ```{r}
 Tabla_problema2 = crea.tablaX(c(x11,x12,x21,x22,x31,x32),3,2)
@@ -833,7 +826,7 @@ criterios=criterio.Todos(Tabla_problema2, alfa = 0.6, favorable = F)
 criterios
 ```
 
-COnclusión:
+Conclusión:
 
 - En todos los criterios sale que la opción más económica es ir a cenar a un
   bar de tapas, pagando 20 euros cada uno, comiendo y bebiendo todo lo que 
