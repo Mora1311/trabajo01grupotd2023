@@ -11,6 +11,7 @@ output: pdf_document
 Aplicar los criterios de decisión bajo incertidumbre a una matriz de datos 
 generados aleatoriamente, considerandolos primero beneficios y luego costos:
 ```{r}
+source("teoriadecision_funciones_incertidumbre.R")
 set.seed(778)
 datos=runif(8*5)
 datos=round(datos,2)
