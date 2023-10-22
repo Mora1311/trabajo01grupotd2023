@@ -183,7 +183,7 @@ estos generarían más beneficios
 
 *Problema 1*
 
-El primer problema a resolver es la siguiente tabla de decisión:
+El primer problema a resolver es la siguiente tabla de decisión, ha de resolverse con todos los criterios y considerandolo casos favorables y casos desfavorables:
 ```{r echo=FALSE}
 source("teoriadecision_funciones_incertidumbre.R")
 tabla=crea.tablaX(c(3,7,25,10,6,2,12,11,5),3,3)
