@@ -362,3 +362,210 @@ criterios
 criterios[4,]
 #La mejor alternativa en 4 de los 6 métodos es Alojamiento y desayuno, por tanto sería la opción que recomendaría al grupo de amigos.
 ```
+
+**Luis Gonzalo Moreno Caso**
+
+*Problema 1*
+
+Se pide tomar la decision optima de la siguiente tabla de decision con los criterios estudiados:
+  
+    e1 e2  e3  e4
+d1 -13  9 -15 -12
+d2   0 -8   6  -1
+d3   1  0  10 -12
+
+Cargamos el archivo con las funciones y guardamos los datos
+```{r}
+source("teoriadecision_funciones_incertidumbre.R")
+tabla = c(-13,9,-15,-12,0,-8,6,-1,1,0,10,-12)
+tabladecision1 = crea.tablaX(tabla,3,4)
+```
+
+Primero: Caso favorable
+
+Criterio de Wald
+```{r}
+criterio.Wald(tabladecision1, favorable = T)$AlternativaOptima
+
+```
+Se elige la alternativa d2
+
+Criterio Optimista
+```{r}
+criterio.Optimista(tabladecision1, favorable = T)$AlternativaOptima
+```
+Se elige la alternativa d3
+```{r}
+criterio.Hurwicz(tabladecision1, favorable = T, alfa = 0.5)$AlternativaOptima
+```
+
+Son igual de optimas las alternativas d2 que d3
+veamos que ocurre para distintos alfas
+
+```{r}
+dibuja.criterio.Hurwicz_Intervalos(tabladecision1)
+```
+En la gráfica se observa que para valores de alfa menores que 0.5 se elige la alternativa d2, para valores mayores que 0.5 se elige la alternativa d3
+
+Criterio de Savage
+```{r}
+criterio.Savage(tabladecision1, favorable = T)$AlternativaOptima
+
+```
+Se elige la alternativa d3
+
+Criterio de Laplace
+```{r}
+criterio.Laplace(tabladecision1, favorable = T)$AlternativaOptima
+
+```
+Se elige la alternativa d3
+
+Criterio del punto ideal
+```{r}
+criterio.PuntoIdeal(tabladecision1, favorable = T)$AlternativaOptima
+
+```
+Se elige la alternativa d3
+
+Segundo: Caso desfavorable
+
+Criterio de Wald
+```{r}
+criterio.Wald(tabladecision1, favorable = F)$AlternativaOptima
+
+```
+Se elige la alternativa d2
+
+Criterio Optimista
+```{r}
+criterio.Optimista(tabladecision1, favorable = F)$AlternativaOptima
+```
+Se elige la alternativa d1
+
+```{r}
+criterio.Hurwicz(tabladecision1, favorable = F, alfa = 0.5)$AlternativaOptima
+```
+Se elige la alternativa d1
+
+Veamos que ocurre para distintos alfas
+
+```{r}
+dibuja.criterio.Hurwicz_Intervalos(tabladecion1, favorable = F)
+```
+En la gráfica se observa que para valores de alfa menores que 0.3 se elige la alternativa d2, para valores mayores que 0.3 se elige la alternativa d1
+
+Criterio de Savage
+```{r}
+criterio.Savage(tabladecision1, favorable = F)$AlternativaOptima
+
+```
+Se elige la alternativa d1
+
+Criterio de Laplace
+```{r}
+criterio.Laplace(tabladecision1, favorable = F)$AlternativaOptima
+
+```
+Se elige la alternativa d1
+
+Criterio del punto ideal
+```{r}
+criterio.PuntoIdeal(tabladecision1, favorable = F)$AlternativaOptima
+
+```
+Se elige la alternativa d1
+
+
+*Problema 2*
+
+Jose Luis quiere abrir un local en Sevilla y tiene tres opciones:
+- La primera se encuentra en pleno centro de la ciudad con unas estimaciones de beneficios de 46,5 mil euros al año en el mejor de los casos 30 mil en un caso intermedio y con perdidas de 26 mil en el peor de los casos.
+- La segunda se encuentra cerca del centro, con unas estimaciones de beneficios de 27 mil euros al año en el mejor de los casos, 19.5 mil euros en un caso intermedio y con perdidas de 14 mil euros en el peor de los casos
+- La tercera es abrir un pequeño local en un barrio que tiene unas estimaciones de beneficios de 18 mil euros al año en el mejor de los casos, 13 mil euros en un caso intermedio y 2,5 mil euros de perdidas en el peor de los caso.
+Tambien se contempla la opción de no abrir ningun local.
+¿Cual es la mejor decision?
+
+Planteamiento
+- Las decisiones se presentan como beneficios. Caso favorable
+
+Alternativas 
+
+ - d1: Abrir un local en el centro
+ - d2: Abrir un local cerca del centro
+ - d3: Abrir el pequeño local en el barrio
+ - d4: No abrir ningún local
+ 
+Estados de la naturaleza
+ - e1: Mercado favorable
+ - e2: Mercado neutro
+ - e3: Mercado desfavorable
+ 
+  
+```{r}
+tabla = c(46.5,30,-26,27,19.5,-14,18,13,-2.5,0,0,0)
+tabladecision2 = crea.tablaX(tabla,4,3)
+```
+
+La tabla es la siguiente
+      e1   e2    e3
+d1  46.5 30.0 -26.0
+d2 27.0 19.5 -14.0
+d3  18.0 13.0  -2.5
+d4   0.0  0.0   0.0
+
+
+Criterio de Wald
+```{r}
+criterio.Wald(tabladecision2, favorable = T)$AlternativaOptima
+
+```
+En el caso pesimista, lo mejor es no arriesgarse (alternativa d4)
+
+Criterio Optimista
+```{r}
+criterio.Optimista(tabladecision2, favorable = T)$AlternativaOptima
+```
+Bajo el criterio optimista, se abre el local en el centro (alternativa d1)
+
+```{r}
+criterio.Hurwicz(tabladecision2, favorable = T, alfa = 0.5)$AlternativaOptima
+```
+Bajo el criterio de Hurwicz, y con un índice de optimismo del 0.5, se eligiría abrir el local en el centro (alternativa d1)
+
+Veamos qué ocurre con distintos índices
+```{r}
+dibuja.criterio.Hurwicz_Intervalos(tabladecision2)
+```
+Entre valores de 0 y 0.122, no se abriría ningún local
+Entre valores de 0.122 y 0.452, se optaría por el pequeño local del barrio
+Entre valores de 0.452 y 1, se abriría el local en el centro
+
+Criterio de Savage
+```{r}
+criterio.Savage(tabladecision2, favorable = T)$AlternativaOptima
+
+```
+Bajo el criterio de Savage, se elige abrir el local cerca del centro (alternativa d2)
+
+Criterio de Laplace
+```{r}
+criterio.Laplace(tabladecision2, favorable = T)$AlternativaOptima
+
+```
+Bajo el criterio de Laplace, se elige abrir el local en el centro (alternativa d1)
+
+Criterio del punto ideal
+```{r}
+criterio.PuntoIdeal(tabladecision2, favorable = T)$AlternativaOptima
+
+```
+Bajo el criterio del punto ideal y con la norma euclídea, se elige abrir el local en el centro (alternativa d1)
+
+Conclusión: Mi decisión final sería abrir en el centro, ya que bajo la mayoría de criterios expuestos, se tiene dicha decisión.
+
+
+
+
+
+
