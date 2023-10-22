@@ -63,3 +63,25 @@ Coste por desayuno fuera del hotel por persona: 7€.
 Coste por comida fuera del hotel por persona: 15€.
 
 Tienen dos opciones ir de viernes a  domingo (2 noches) o ir de miércoles a domingo (4 noches), pero no lo saben todavia porque depende de que le den dias libres en el trabajo a un par de ellos, pero tienen que hacer la reserva ya para que no les suba el precio. Por tanto, teniendo en cuenta que hacen el check in a las 13:00pm en el hotel y el check out a las 12:00pm, ¿Que opción es mas recomendable para este grupo de amigos si pretenden minimizar los costes?
+
+**Luis Gonzalo Moreno Caso**
+
+*Problema 1*
+
+Se pide tomar la decision optima de la siguiente tabla de decision con los criterios estudiados:
+  
+    e1 e2  e3  e4
+d1 -13  9 -15 -12
+d2   0 -8   6  -1
+d3   1  0  10 -12
+
+Primero entendiendo la tabla favorablemente, y después en el caso desfavorable.
+
+*Problema 2*
+
+Jose Luis quiere abrir un local en Sevilla y tiene tres opciones:
+- La primera se encuentra en pleno centro de la ciudad con unas estimaciones de beneficios de 46,5 mil euros al año en el mejor de los casos 30 mil en un caso intermedio y con perdidas de 26 mil en el peor de los casos.
+- La segunda se encuentra cerca del centro, con unas estimaciones de beneficios de 27 mil euros al año en el mejor de los casos, 19.5 mil euros en un caso intermedio y con perdidas de 14 mil euros en el peor de los casos.
+- La tercera es abrir un pequeño local en un barrio que tiene unas estimaciones de beneficios de 18 mil euros al año en el mejor de los casos, 13 mil euros en un caso intermedio y 2,5 mil euros de perdidas en el peor de los casos.
+Tambien se contempla la opción de no abrir ningun local.
+¿Cual es la mejor decision?
