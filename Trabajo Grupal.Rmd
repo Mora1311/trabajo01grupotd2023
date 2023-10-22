@@ -177,3 +177,187 @@ aplicando el resto de los criterios la empresa debería lanzar cojines con figur
 en su estampado.
 Por lo tanto, la recomendación es vender cojines con estampados de figuras geométricas, pues
 estos generarían más beneficios
+
+**Miguel Maldonado Sampayo**
+
+*Problema 1*
+
+El primer problema a resolver es la siguiente tabla de decisión:
+```{r echo=FALSE}
+source("teoriadecision_funciones_incertidumbre.R")
+tabla=crea.tablaX(c(3,7,25,10,6,2,12,11,5),3,3)
+rownames(tabla)=c("d1","d2","d3")
+colnames(tabla)=c("e1","e2","e3")
+tabla
+```
+
+#### Criterio de Wald
+
+- Método favorable:
+```{r echo=TRUE}
+WaldF=criterio.Wald(tabla, favorable = T)
+WaldF$AlternativaOptima
+#La mejor opción es d3
+```
+
+- Método desfavorable:
+```{r echo=TRUE}
+WaldD=criterio.Wald(tabla, favorable = F)
+WaldD$AlternativaOptima
+#La mejor opción es d2
+```
+
+#### Criterio Optimista
+
+- Método favorable:
+```{r echo=TRUE}
+OptF=criterio.Optimista(tabla, favorable = T)
+OptF$AlternativaOptima
+#La mejor opción es d1
+```
+
+- Método desfavorable:
+```{r echo=TRUE}
+OptD=criterio.Optimista(tabla, favorable = F)
+OptD$AlternativaOptima
+#La mejor opción es d2
+```
+
+#### Criterio de Hurwicz
+
+- Método favorable:
+```{r echo=TRUE}
+HurwF=criterio.Hurwicz(tabla, favorable = T)
+HurwF$AlternativaOptima
+#La mejor opción es d1
+```
+
+- Método desfavorable:
+```{r echo=TRUE}
+HurwD=criterio.Hurwicz(tabla, favorable = F)
+HurwD$AlternativaOptima
+#La mejor opción es d2
+```
+
+- Método favorable:
+```{r echo=TRUE}
+HurwFG=criterio.Hurwicz.General(tabla, favorable = T)
+HurwFG$AlternativaOptima
+#La mejor opción es d1
+```
+
+- Método desfavorable:
+```{r echo=TRUE}
+HurwDG=criterio.Hurwicz.General(tabla, favorable = F)
+HurwDG$AlternativaOptima
+#La mejor opción es d2
+```
+
+#### Criterio de Savage
+
+- Método favorable:
+```{r echo=TRUE}
+SavaF=criterio.Savage(tabla, favorable = T)
+SavaF$AlternativaOptima
+#La mejor opción es d1
+```
+
+- Método desfavorable:
+```{r echo=TRUE}
+SavaD=criterio.Savage(tabla, favorable = F)
+SavaD$AlternativaOptima
+#La mejor opción es d2
+```
+
+#### Criterio de LaPlace
+
+- Método favorable:
+```{r echo=TRUE}
+LaplF=criterio.Laplace(tabla, favorable = T)
+LaplF$AlternativaOptima
+#La mejor opción es d1
+```
+
+- Método desfavorable:
+```{r echo=TRUE}
+LaplD=criterio.Laplace(tabla, favorable = F)
+LaplD$AlternativaOptima
+#La mejor opción es d2
+```
+
+#### Criterio Punto Ideal
+
+- Método favorable:
+```{r echo=TRUE}
+PuntF=criterio.PuntoIdeal(tabla, favorable = T)
+PuntF$AlternativaOptima
+#La mejor opción es d1
+```
+
+- Método desfavorable:
+```{r echo=TRUE}
+PuntD=criterio.PuntoIdeal(tabla, favorable = F)
+PuntD$AlternativaOptima
+#La mejor opción es d2
+```
+
+*Problema 2*
+
+Un grupo de 5 amigos quiere decidir a que hotel viajar de vacaciones para el viaje han ido a una agencia de viaje donde les han dado varias opciones:
+
+- La primera opción es la que les costaría 70€ la noche por persona pero a partir de la tercera noche son 50€, pero sería con alojamiento y desayuno solamente.
+
+- La segunda opción es la que le costaría 55€ la noche por persona para reservas de 3 noches o mas, serían 60€ para reservas de menos de 3 noches, en este caso en régimen de solo alojamiento.
+
+- La última opción es la que les costaría 100€ la noche por persona en pensión completa (alojamiento + desayuno, comida y cena) sin ninguna opcion de descuento u oferta.
+
+Coste por desayuno fuera del hotel por persona: 7€.
+
+Coste por comida fuera del hotel por persona: 15€.
+
+Tienen dos opciones ir de viernes a  domingo (2 noches) o ir de miércoles a domingo (4 noches), pero no lo saben todavia porque depende de que le den dias libres en el trabajo a un par de ellos, pero tienen que hacer la reserva ya para que no les suba el precio. Por tanto, teniendo en cuenta que hacen el check in a las 13:00pm en el hotel y el check out a las 12:00pm, ¿Que opción es mas recomendable para este grupo de amigos si pretenden minimizar los costes?
+
+### Planteamiento
+ 
+- Modelo de costos (desfavorables)
+
+##### Alternativas:
+
+- d1: "Alojamiento y desayuno"
+- d2: "Solo alojamiento"
+- d3: "Pensión completa"
+
+##### Número de noches:
+
+- e1: "Van 2 noches y 3 dias"
+- e2: "Van 4 noches y 5 dias"
+
+##### Tabla de valoraciones
+
+- Alternativa d1:
+
+  - x_1,1= 70 * 5 * 2 + 15 * 2 * 5 * 2 = 1.000€
+  - x_1,2= 70 * 5 * 2 + 50 * 5 * 2 + 15 * 2 * 5 * 4 = 1.800€
+
+- Alternativa d2:
+
+  - x_2,1= 60 * 5 * 2 + 7 * 5 * 2 + 15 * 2 * 5 * 2 = 970€
+  - x_2,2= 55 * 5 * 4 + 7 * 5 * 4 + 15 * 2 * 5 * 4 = 1.840€
+ 
+- Alternativa d3:
+
+  - x_3,1= 100 * 5 * 2 = 1.000€
+  - x_3,2= 100 * 5 * 4 = 2.000€
+```{r echo=FALSE}
+tabla2=crea.tablaX(c(1000,1800,970,1840,1000,2000),3,2)
+rownames(tabla2)=c("Alojamiento y desayuno", "Solo Alojamiento", "Pensión Completa")
+colnames(tabla2)=c("2 noches y 3 dias", "4 noches y 5 dias")
+tabla2
+```
+
+```{r echo=TRUE}
+criterios=criterio.Todos(tabla2, alfa = 0.6, favorable = F)
+criterios
+criterios[4,]
+#La mejor alternativa en 4 de los 6 métodos es Alojamiento y desayuno, por tanto sería la opción que recomendaría al grupo de amigos.
+```
