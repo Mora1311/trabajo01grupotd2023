@@ -98,7 +98,10 @@ Tambien se contempla la opción de no abrir ningun local.
 Aplicar los criterios de decisión bajo incertidumbre por separado a los 
 problemas cuya matriz de valores numéricos viene dada en la siguiente tabla:
 
+```{r}
 matrix(c(4,3,6,7,5,5,3,-2,4,6,-9,9,2,5,9,0,1,2,5,3),5,4)
+
+```
 
 Hay que diferenciar entre casos favorables y casos no favorables.
 
