@@ -360,7 +360,8 @@ tabla2
 criterios=criterio.Todos(tabla2, alfa = 0.6, favorable = F)
 criterios
 criterios[4,]
-#La mejor alternativa en 4 de los 6 métodos es Alojamiento y desayuno, por tanto sería la opción que recomendaría al grupo de amigos.
+#La mejor alternativa en 4 de los 6 métodos es Alojamiento y desayuno, 
+#por tanto sería la opción que recomendaría al grupo de amigos.
 ```
 
 **Luis Gonzalo Moreno Caso**
@@ -451,7 +452,7 @@ Se elige la alternativa d1
 Veamos que ocurre para distintos alfas
 
 ```{r}
-dibuja.criterio.Hurwicz_Intervalos(tabladecion1, favorable = F)
+dibuja.criterio.Hurwicz_Intervalos(tabladecision1, favorable = F)
 ```
 En la gráfica se observa que para valores de alfa menores que 0.3 se elige la alternativa d2, para valores mayores que 0.3 se elige la alternativa d1
 
